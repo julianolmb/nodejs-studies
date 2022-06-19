@@ -36,7 +36,21 @@
 
 // console.log(toArray(1, 2, 3, 4));
 
+// const fetchData = (callback) => {
+//   setTimeout(() => {
+//     callback("done");
+//   }, 1500);
+// };
+
+// setTimeout(() => {
+//   console.log("Timer is done!");
+//   fetchData((text) => {
+//     console.log(text);
+//   });
+// }, 2000);
+
 const fetchData = (callback) => {
+  const promise = new Promise((resolve, reject) => {});
   setTimeout(() => {
     callback("done");
   }, 1500);
