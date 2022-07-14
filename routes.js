@@ -36,11 +36,11 @@ const requestHandler = (req, res) => {
   res.end();
 };
 
-module.exports = requestHandler;
+// module.exports = requestHandler;
 
 // another way of exporting
-// module.exports.handler = requestHandler;
-// module.exports.someText = "some hard coded text";
+module.exports.handler = requestHandler;
+module.exports.someText = "some hard coded text";
 
 // exports.handler = requestHandler
 
