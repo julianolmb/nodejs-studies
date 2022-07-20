@@ -1,6 +1,21 @@
-const http = require("http");
-const routes = require("./routes");
+const path = require("path");
+const express = require("express");
+const bodyParser = require("body-parser");
 
-const server = http.createServer(routes);
+const app = express();
 
-server.listen(3000);
+const adminData = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+// static will grand read access to this folder and express will redirect requests to that folder (user can access the public path)
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/admin", adminData.routes);
+app.use(shopRoutes);
+
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
+
+app.listen(3000);
